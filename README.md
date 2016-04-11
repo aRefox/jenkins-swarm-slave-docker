@@ -1,24 +1,19 @@
 # Jenkins swarm slave
 
-[`csanchez/jenkins-swarm-slave`](https://registry.hub.docker.com/u/csanchez/jenkins-swarm-slave/)
+[`andretadeu/jenkins-swarm-slave`](https://hub.docker.com/r/andretadeu/jenkins-swarm-slave/), a fork from [`csanchez/jenkins-swarm-slave`](https://hub.docker.com/r/csanchez/jenkins-swarm-slave/)
 
 A [Jenkins swarm](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin) slave.
 
-For a container with ssh enabled see
-[`csanchez/jenkins-slave`](https://registry.hub.docker.com/u/csanchez/jenkins-slave/)
 
 ## Running
 
-To run a Docker container passing [any parameters](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin#SwarmPlugin-AvailableOptions) to the slave
+To run this container in your computer, you'll need a running Jenkins Docker container. The commands bellow will do the job:
 
-    docker run csanchez/jenkins-swarm-slave -master http://jenkins:8080 -username jenkins -password jenkins -executors 1
-
-Linking to the Jenkins master container there is no need to use `--master`
-
-    docker run -d --name jenkins -p 8080:8080 csanchez/jenkins-swarm
-    docker run -d --link jenkins:jenkins csanchez/jenkins-swarm-slave -username jenkins -password jenkins -executors 1
-
+```bash
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 andretadeu/jenkins-swarm
+docker run -d --name jenkins-slave-01 --link jenkins:jenkins andretadeu/jenkins-swarm-slave
+```
 
 # Building
 
-    docker build -t csanchez/jenkins-swarm-slave .
+    docker build -t <your name or company>/jenkins-swarm-slave .
