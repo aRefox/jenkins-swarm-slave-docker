@@ -1,6 +1,6 @@
 FROM java:8-jdk
 
-MAINTAINER Carlos Sanchez <carlos@apache.org>
+MAINTAINER Andre Tadeu de Carvalho <andre.tadeu.de.carvalho@gmail.com>
 
 ENV JENKINS_SWARM_VERSION 2.0
 ENV HOME /home/jenkins-slave
@@ -18,4 +18,4 @@ COPY jenkins-slave.sh /usr/local/bin/jenkins-slave.sh
 USER jenkins-slave
 VOLUME /home/jenkins-slave
 
-ENTRYPOINT ["/usr/local/bin/jenkins-slave.sh"]
+ENTRYPOINT ["/usr/local/bin/jenkins-slave.sh", "slave:start"]

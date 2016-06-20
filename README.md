@@ -16,4 +16,6 @@ docker run -d --name jenkins-slave-01 --link jenkins:jenkins andretadeu/jenkins-
 
 # Building
 
-    docker build -t <your name or company>/jenkins-swarm-slave .
+```bash
+docker build -t <your name or company>/jenkins-swarm-slave .
+```
